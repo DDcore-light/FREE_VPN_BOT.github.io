@@ -3,21 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой GitHub сайт</title>
+    <title>Мой опыт создания VPN-бота для Telegram</title>
+    <!-- Подключаем Tailwind CSS для красивого и быстрого дизайна -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключаем плагин типографики для красивого текста статьи -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
+        /* Небольшая кастомная анимация для кнопки */
+        .btn-hover {
+            transition: all 0.3s ease;
         }
-        h1 { color: #333; }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
     </style>
 </head>
-<body>
-    <h1>Привет! Это мой сайт на GitHub Pages.</h1>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Шапка сайта -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 py-6 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-900">Блог Разработчика</h1>
+            <a href="#github-link" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Скачать исходники</a>
+        </div>
+    </header>
+
+    <!-- Основной контент статьи -->
+    <main class="max-w-3xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <article class="prose prose-lg prose-blue mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Как я написал своего VPN-бота для Telegram: от идеи до реализации
+            </h1>
+            
+            <p class="text-gray-500 text-sm mb-8">Опубликовано: Июнь 2026 | Время чтения: 4 мин</p>
+
+            <p class="lead text-xl text-gray-600 mb-6">
+                Всех приветствую! Моя первая статья в жизни, поэтому строго прошу не судить. Я являюсь разработчиком Telegram ботов уже 4 года, моим первым проектом была CRM для барбер-шопов.
+            </p>
+
+            <p>
+                История разработки началась с того момента, как всякие VPN боты с продажами своих ключей стали лезть из каждого утюга. Тут у меня загорелись глаза, я тут же побежал смотреть информацию, что и как делается, но ни одного нормального гайда по продажам VPN через бот на тот момент не было найдено. Я умудрился найти репозиторий GitHub, в котором был представлен нужный мне бот, посмотрел его, но ничего интересного не нашел.
+            </p>
+
+            <p>
+                Начал думать, как осуществить все самостоятельно, и понял, что можно осуществить такую связку: <strong>бот ➔ панель</strong>.
+            </p>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Первые попытки и сервера</h3>
+            <p>
+                Я зашел на популярный сервис по аренде VPS серверов, взял и сидел как обезьяна, думал, что делать с этим, т.к. опыта работы с сетями у меня не было. Начал уже искать информацию о развертывании VPN сервера, настройке и прочем. Нашел кучу гайдов с использованием разных панелей.
+            </p>
+            <ul>
+                <li>Первой в тест полетела <strong>WireGuard</strong> — установил, сделал ключ и все =). Но это было не то, что мне нужно: иначе как я буду продавать свои ключи, если он один на всех?</li>
+                <li>Поставил <strong>Marzban</strong>, но он тупо не запускался (повторяюсь, у меня нет опыта работы с сетями).</li>
+                <li>Через неделю решил использовать <strong>3X-UI</strong> — наверное, самое лучшее, что я нашел.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Написание бота и запуск</h3>
+            <p>
+                Вставил в код бота "селекторы" (поправьте меня, если неправильно написал) и все работало отлично, сделал бота — вышло около 800+ строк кода. Запустил продажу, подключил ЮKassa, оплату за звезды... но, как и всегда бывает, мне не хватило денег на сервера.
+            </p>
+            <p>
+                Но я просто так это не бросил! Несмотря на то, что денег не было на обслуживание серверов, на балансе оставались копейки. Я запустил сервер и параллельно начал изучать чужих ботов для VPN и обнаружил одинаковый дизайн 1 в 1.
+            </p>
+
+            <!-- Блок для фотографии -->
+            <figure class="my-8">
+                <div class="bg-gray-200 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-300" style="height: 300px;">
+                    <span class="text-gray-500 font-medium flex flex-col items-center">
+                        <svg class="w-12 h-12 mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        [Сюда можно вставить фото одинаковых панелей]
+                    </span>
+                </div>
+                <figcaption class="text-center text-sm text-gray-500 mt-2">Пример одинакового дизайна, который используют конкуренты</figcaption>
+            </figure>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Свое решение (VLESS + свой бэк)</h3>
+            <p>
+                Я понял, что все используют ту же панель Marzban, просто с другим дизайном. Я не хотел использовать панель "как у всех" и сделал небольшой бэк, который работает таким образом:
+            </p>
+            <blockquote class="border-l-4 border-blue-500 pl-4 italic text-gray-700 bg-blue-50 py-2 pr-2 rounded-r-lg">
+                Пользователь приходит к боту, просит у него ключ, который вставляется в HAPP, Hiddify и прочее. Запрашивает подключения к разным серверам по протоколу VLESS, после чего отдает HAPP все "локации", и пользователь сам выбирает то, что ему нужно. Вот и все! )))
+            </blockquote>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Итоги и исходники</h3>
+            <p>
+                Почему я решил написать эту статью? Все просто: когда я искал в интернете подобные гайды, я ничего не находил. Теперь пришло время опубликовать эту статью и код с гайдом.
+            </p>
+            <p>
+                Убедительная просьба не критиковать мой код, т.к. он был написан на коленке. Я его публикую исключительно для того, чтобы вы, доделав его, могли заработать деньги с продаж. Также я не буду писать полную инструкцию от А до Я, а лишь максимально короткий гайд (он есть в репозитории).
+            </p>
+
+            <!-- Кнопка со ссылкой на GitHub -->
+            <div id="github-link" class="mt-12 flex justify-center">
+                <a href="СЮДА_ВСТАВЬ_ССЫЛКУ_НА_ВТОРОЙ_РЕПОЗИТОРИЙ" target="_blank" class="btn-hover inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gray-900 rounded-full hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                    <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                    </svg>
+                    Скачать исходный код бота
+                </a>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-4">
+                Перенаправит на GitHub репозиторий с кодом и инструкцией
+            </p>
+
+        </article>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="bg-white border-t border-gray-200 mt-12 py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center text-gray-500">
+            <p>&copy; 2026 Блог Разработчика. Код бота распространяется как есть.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
