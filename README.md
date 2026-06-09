@@ -8,7 +8,7 @@
 🌐 Прочитать статью можно здесь: [ССЫЛКА !](https://github.com/DDcore-light/telgram_vpn_bot)
 
 ### 📂 Исходный код самого VPN-бота доступен в соседнем репозитории: [ССЫЛКА !](https://github.com/DDcore-light/telgram_vpn_bot)
-
+## ВАЖНО ! Бот находится в состояние MVP 
 Стек:\
 *HTML5*\
 *Tailwind CSS*\
